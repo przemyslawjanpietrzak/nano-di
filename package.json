@@ -1,0 +1,24 @@
+{
+  "name": "nanoDi",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/nanoDi.js",
+  "module": "dist/nanoDi.js",
+  "types": "dist/nanoDi.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "format": "prettier ./lib --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "strict": true,
+    "lib": ["ESNext"]
+  },
+  "files": ["lib/nano-di.ts"]
+}
