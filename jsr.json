@@ -1,6 +1,6 @@
 {
 	"name": "@beigert/nano-di",
-	"version": "0.1.6",
+	"version": "1.0.0",
 	"license": "MIT",
 	"exports": "./lib/nano-di.ts"
 }
