@@ -32,7 +32,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-        working-directory: frontend
 
       - name: Check format
         run: biome format
