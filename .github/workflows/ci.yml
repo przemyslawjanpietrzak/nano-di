@@ -1,0 +1,50 @@
+name: CI Frontend
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: Nano DI
+    runs-on: ubuntu-latest
+    env:
+      NODEJS_VERSION: "20.18"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: "9.12.1"
+
+      - name: Use Node.js ${{ env.NODEJS_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODEJS_VERSION }}
+          cache: "pnpm"
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Setup Biome CLI
+        uses: biomejs/setup-biome@v2
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: frontend
+
+      - name: Check format
+        run: biome format
+
+      - name: Linter
+        run: biome lint
+
+      - name: Type check
+        run: biome lint
+
+      - name: Unit test
+        run: pnpm test
+
+      - name: Release check
+        run: npx jsr publish --dry-run
