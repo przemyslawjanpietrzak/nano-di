@@ -14,13 +14,13 @@ This library provides a simple, lightweight dependency injection for TypeScript.
 Install:
 
 ```bash
-npm install nano-di -S
+npx jsr add @beigert/nano-di S
 ```
 
 ## Usage
 
 ```ts
-import { Container, DiContainerScope, injectable  } from "di-container";
+import { Container, DiContainerScope, injectable  } from "@beigert/nano-di";
 
 const container = Container.create();
 
@@ -57,7 +57,7 @@ serviceB.getMessages(); // ["Hello from ServiceA!", "Hello from ServiceB!"]
 ## Bind constant value
 
 ```ts
-import { Container, DiContainerScope, injectable  } from "di-container";
+import { Container, DiContainerScope, injectable  } from "@beigert/nano-di";
 
 const container = Container.create();
 

@@ -1,13 +1,6 @@
 {
-  "name": "@beigert/nano-di",
-  "version": "0.1.5",
-  "license": "MIT",
-  "exports": "./lib/nano-di.ts",
-  "tasks": {
-    "test": "vitest run"
-  },
-  "imports": {
-    "@dx/reflect": "jsr:@dx/reflect@^0.2.14",
-    "@std/assert": "jsr:@std/assert@1"
-  }
+	"name": "@beigert/nano-di",
+	"version": "0.1.6",
+	"license": "MIT",
+	"exports": "./lib/nano-di.ts"
 }

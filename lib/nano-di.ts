@@ -1,16 +1,20 @@
-import { Reflection } from "@ph/reflection";
+import { Reflect as ReflectMetadata } from "@dx/reflect";
 
-export type DiConstructor<T = any> = new (...args: Array<any>) => T;
+export type DiConstructor<T = unknown> = new (...args: Array<unknown>) => T;
 
 export interface IContainer {
-  bind<T>(identifier: string | symbol, implementation: DiConstructor<T>, scope?: DiContainerScope): void;
+  bind<T>(
+    identifier: string | symbol,
+    implementation: DiConstructor<T>,
+    scope?: DiContainerScope,
+  ): void;
   bindConstant<T>(identifier: string | symbol, value: T): void;
   resolve<T>(identifier: string | symbol): T;
 }
 
 export const enum DiContainerScope {
-  Singleton,
-  Transient,
+  Singleton = 0,
+  Transient = 1,
 }
 
 export interface Binding<T> {
@@ -20,7 +24,7 @@ export interface Binding<T> {
 }
 
 export class Container implements IContainer {
-  private bindings = new Map<string | symbol, Binding<any>>();
+  private bindings = new Map<string | symbol, Binding<unknown>>();
 
   static create<T extends IContainer = IContainer>(): T {
     return new Container() as unknown as T;
@@ -56,19 +60,22 @@ export class Container implements IContainer {
       if (!binding.instance) {
         binding.instance = this.createInstance(binding.implementation);
       }
-      return binding.instance;
+      return binding.instance as T;
     }
 
     // Otherwise, create a new instance each time (transient)
-    return this.createInstance(binding.implementation);
+    return this.createInstance(binding.implementation) as T;
   }
 
   // Create an instance, resolving dependencies recursively
   private createInstance<T>(implementation: DiConstructor<T> | (() => T)): T {
     if (typeof implementation === "function" && implementation.prototype) {
       // It's a class constructor; resolve dependencies
-      const paramTypes: Array<string> = Reflection.getMetadata("design:paramtypes", implementation) || [];
-      const dependencies = paramTypes.map((paramType) => this.resolve(paramType));
+      const paramTypes: Array<string> =
+        ReflectMetadata.getMetadata("design:paramtypes", implementation) || [];
+      const dependencies = paramTypes.map((paramType) =>
+        this.resolve(paramType),
+      );
       // @ts-expect-error
       return new implementation(...dependencies);
     }
@@ -81,16 +88,21 @@ export class Container implements IContainer {
 
 // Decorators for binding and injecting
 export function injectable(): ClassDecorator {
-  return (target: any) => {
+  return (target: unknown) => {
     // Placeholder to mark the class as injectable
-    Reflection.defineMetadata("injectable", true, target);
+    ReflectMetadata.defineMetadata("injectable", true, target);
   };
 }
 
 export function inject(identifier: string | symbol): ParameterDecorator {
   return (target, _propertyKey, parameterIndex) => {
-    const existingInjections: Array<any> = Reflection.getMetadata("design:paramtypes", target) || [];
+    const existingInjections: Array<unknown> =
+      ReflectMetadata.getMetadata("design:paramtypes", target) || [];
     existingInjections[parameterIndex] = identifier;
-    Reflection.defineMetadata("design:paramtypes", existingInjections, target);
+    ReflectMetadata.defineMetadata(
+      "design:paramtypes",
+      existingInjections,
+      target,
+    );
   };
 }

@@ -1,11 +1,14 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
-    "declaration": true,
-    "strict": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "lib": ["ESNext"]
-  },
-  "files": ["lib/nano-di.ts"]
+	"compilerOptions": {
+		"outDir": "dist",
+		"declaration": true,
+		"strict": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"isolatedModules": true,
+		"lib": ["ESNext"],
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext"
+	},
+	"files": ["lib/nano-di.ts"]
 }

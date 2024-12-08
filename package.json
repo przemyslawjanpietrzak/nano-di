@@ -1,26 +1,23 @@
 {
-  "name": "nano-di",
-  "version": "0.1.2",
-  "description": "",
-  "main": "dist/nano-di.js",
-  "module": "dist/nano-di.js",
-  "types": "dist/nano-di.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "test": "vitest run",
-    "format": "prettier ./lib --write"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "@beigert/nano-di": "npm:@jsr/beigert__nano-di@^0.1.0",
-    "@ph/reflection": "npm:@jsr/ph__reflection@^1.0.5",
-    "reflect-metadata": "^0.2.2"
-  },
-  "devDependencies": {
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
-  }
+	"name": "nano-di",
+	"version": "0.1.2",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"test": "vitest run",
+		"format": "prettier ./lib --write",
+		"typeCheck": "tsc --noEmit",
+		"publish": "npx jsr publish"
+	},
+	"keywords": [],
+	"author": "Przemyslaw Jan Beigert",
+	"license": "MIT",
+	"dependencies": {
+		"@dx/reflect": "npm:@jsr/dx__reflect@^0.2.14"
+	},
+	"devDependencies": {
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.8"
+	}
 }
