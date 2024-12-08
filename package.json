@@ -1,10 +1,10 @@
 {
-  "name": "nanoDi",
-  "version": "0.0.0",
+  "name": "nano-di",
+  "version": "0.1.2",
   "description": "",
-  "main": "dist/nanoDi.js",
-  "module": "dist/nanoDi.js",
-  "types": "dist/nanoDi.d.ts",
+  "main": "dist/nano-di.js",
+  "module": "dist/nano-di.js",
+  "types": "dist/nano-di.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
@@ -14,6 +14,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@beigert/nano-di": "npm:@jsr/beigert__nano-di@^0.1.0",
+    "@ph/reflection": "npm:@jsr/ph__reflection@^1.0.5",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {

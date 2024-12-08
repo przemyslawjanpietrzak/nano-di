@@ -1,4 +1,4 @@
-import "reflect-metadata";
+import { Reflection } from "@ph/reflection";
 
 export type DiConstructor<T = any> = new (...args: Array<any>) => T;
 
@@ -22,7 +22,7 @@ export interface Binding<T> {
 export class Container implements IContainer {
   private bindings = new Map<string | symbol, Binding<any>>();
 
-  static create<T extends IContainer = IContainer>() {
+  static create<T extends IContainer = IContainer>(): T {
     return new Container() as unknown as T;
   }
 
@@ -67,7 +67,7 @@ export class Container implements IContainer {
   private createInstance<T>(implementation: DiConstructor<T> | (() => T)): T {
     if (typeof implementation === "function" && implementation.prototype) {
       // It's a class constructor; resolve dependencies
-      const paramTypes: Array<string> = Reflect.getMetadata("design:paramtypes", implementation) || [];
+      const paramTypes: Array<string> = Reflection.getMetadata("design:paramtypes", implementation) || [];
       const dependencies = paramTypes.map((paramType) => this.resolve(paramType));
       // @ts-expect-error
       return new implementation(...dependencies);
@@ -83,14 +83,14 @@ export class Container implements IContainer {
 export function injectable(): ClassDecorator {
   return (target: any) => {
     // Placeholder to mark the class as injectable
-    Reflect.defineMetadata("injectable", true, target);
+    Reflection.defineMetadata("injectable", true, target);
   };
 }
 
 export function inject(identifier: string | symbol): ParameterDecorator {
   return (target, _propertyKey, parameterIndex) => {
-    const existingInjections: Array<any> = Reflect.getMetadata("design:paramtypes", target) || [];
+    const existingInjections: Array<any> = Reflection.getMetadata("design:paramtypes", target) || [];
     existingInjections[parameterIndex] = identifier;
-    Reflect.defineMetadata("design:paramtypes", existingInjections, target);
+    Reflection.defineMetadata("design:paramtypes", existingInjections, target);
   };
 }

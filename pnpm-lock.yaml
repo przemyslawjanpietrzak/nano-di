@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@beigert/nano-di':
+        specifier: npm:@jsr/beigert__nano-di@^0.1.0
+        version: '@jsr/beigert__nano-di@0.1.0'
+      '@ph/reflection':
+        specifier: npm:@jsr/ph__reflection@^1.0.5
+        version: '@jsr/ph__reflection@1.0.5'
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -164,6 +170,15 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
+
+  '@jsr/beigert__nano-di@0.1.0':
+    resolution: {integrity: sha512-PteOBTS5Z+WhglA7tlbodM1RR1qTcLcYwLYIY1PH+icv64ZtJ65gL3MuHUPhKPlIzvL4Fp99r2xWcywRxwSDKw==, tarball: https://npm.jsr.io/~/11/@jsr/beigert__nano-di/0.1.0.tgz}
+
+  '@jsr/dx__reflect@0.2.14':
+    resolution: {integrity: sha512-CDwzk+a1WRcRkgVm2BdcKOmQyAybDO/X2STysafKaUtCBvBDYFTmRqBw+uKlHhPydL5BwrYePSgm302n/4vzVw==, tarball: https://npm.jsr.io/~/11/@jsr/dx__reflect/0.2.14.tgz}
+
+  '@jsr/ph__reflection@1.0.5':
+    resolution: {integrity: sha512-kgHAUhDFkJrELAzXf4EWsxJSpUQkQhMVTY96mqJnMmdhgf0+bALZxrum5LTHtFaB9ch4TrR0V4Nyg4Ue2ORxwg==, tarball: https://npm.jsr.io/~/11/@jsr/ph__reflection/1.0.5.tgz}
 
   '@rollup/rollup-android-arm-eabi@4.28.1':
     resolution: {integrity: sha512-2aZp8AES04KI2dy3Ss6/MDjXbwBzj+i0GqKtWXgw2/Ma6E4jJvujryO6gJAghIRVz7Vwr9Gtl/8na3nDUKpraQ==}
@@ -556,6 +571,14 @@ snapshots:
     optional: true
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
+
+  '@jsr/beigert__nano-di@0.1.0':
+    dependencies:
+      '@jsr/dx__reflect': 0.2.14
+
+  '@jsr/dx__reflect@0.2.14': {}
+
+  '@jsr/ph__reflection@1.0.5': {}
 
   '@rollup/rollup-android-arm-eabi@4.28.1':
     optional: true
