@@ -22,11 +22,16 @@ export interface Binding<T> {
 export class Container implements IContainer {
 	private bindings = new Map<string | symbol, Binding<unknown>>();
 
+	/**
+	 * Create a new container instance. Pass ContainerFacade as generic to retype the container.
+	 */
 	static create<T extends IContainer = IContainer>(): T {
 		return new Container() as unknown as T;
 	}
 
-	// Bind a dependency with an optional scope
+	/**
+	 * Bind dependency to the container on the identifier key with proper scope.
+	 */
 	bind<T>(
 		identifier: string | symbol,
 		implementation: DiConstructor<T>,
@@ -36,7 +41,9 @@ export class Container implements IContainer {
 		return this;
 	}
 
-	// Bind a constant value
+	/**
+	 * Bind constant to the container on the identifier key, instead of class instance.
+	 */
 	bindConstant<T>(identifier: string | symbol, value: T) {
 		this.bindings.set(identifier, {
 			implementation: () => value,
@@ -45,7 +52,9 @@ export class Container implements IContainer {
 		});
 	}
 
-	// Resolve a dependency
+	/**
+	 * Resolve the dependency from the container. Based on key, it will return the instance of the class.
+	 */
 	resolve<T>(identifier: string | symbol): T {
 		const binding = this.bindings.get(identifier);
 		if (!binding) {

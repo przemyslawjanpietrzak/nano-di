@@ -1,4 +1,4 @@
-# nanoDi lightway dependency injection library
+# nano-di lightway dependency injection library
 
 This library provides a simple, lightweight dependency injection for TypeScript. It supports singleton and transient scopes, constants, and recursive dependency resolution.
 
