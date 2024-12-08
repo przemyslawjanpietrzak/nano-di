@@ -1,18 +1,16 @@
 {
 	"name": "nano-di",
-	"version": "0.1.2",
-	"description": "",
+	"version": "1.0.0",
+	"author": "Przemyslaw Jan Beigert",
+	"license": "MIT",
+	"description": "This library provides a simple, lightweight dependency injection for TypeScript. It supports singleton and transient scopes, constants, and recursive dependency resolution.",
 	"type": "module",
 	"scripts": {
-		"build": "tsc",
 		"test": "vitest run",
-		"format": "prettier ./lib --write",
 		"typeCheck": "tsc --noEmit",
 		"publish": "npx jsr publish"
 	},
 	"keywords": [],
-	"author": "Przemyslaw Jan Beigert",
-	"license": "MIT",
 	"dependencies": {
 		"@dx/reflect": "npm:@jsr/dx__reflect@^0.2.14"
 	},

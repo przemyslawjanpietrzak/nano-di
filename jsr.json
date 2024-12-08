@@ -1,6 +1,7 @@
 {
 	"name": "@beigert/nano-di",
-	"version": "0.1.6",
+	"description": "This library provides a simple, lightweight dependency injection for TypeScript. It supports singleton and transient scopes, constants, and recursive dependency resolution.",
+	"version": "1.0.0",
 	"license": "MIT",
 	"exports": "./lib/nano-di.ts"
 }

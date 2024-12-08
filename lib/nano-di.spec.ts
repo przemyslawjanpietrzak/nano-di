@@ -9,7 +9,7 @@ describe("Lightweight DI Library", () => {
 		container = Container.create();
 	});
 
-	it("", () => {
+	it("should resolve class instance", () => {
 		@injectable()
 		class ServiceA {
 			getMessage() {
@@ -24,7 +24,7 @@ describe("Lightweight DI Library", () => {
 		expect(serviceA.getMessage()).toBe("Hello from ServiceA!");
 	});
 
-	it("s", () => {});
+	it("when class was not injected resolve should throw proper error", () => {});
 
 	it("should throw an error for unbound dependencies", () => {
 		@injectable()
@@ -67,9 +67,7 @@ describe("Lightweight DI Library", () => {
 			}
 		}
 
-		container.bind("ServiceA", ServiceA);
-		container.bind("ServiceB", ServiceB);
-		container.bind("ServiceC", ServiceC);
+		container.bind("ServiceA", ServiceA).bind("ServiceB", ServiceB).bind("ServiceC", ServiceC);
 
 		const serviceC = container.resolve<ServiceC>("ServiceC");
 
