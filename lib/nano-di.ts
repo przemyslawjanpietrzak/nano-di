@@ -36,7 +36,7 @@ export class Container implements IContainer {
 		identifier: string | symbol,
 		implementation: DiConstructor<T>,
 		scope: DiContainerScope = DiContainerScope.Singleton,
-	) {
+	): this {
 		this.bindings.set(identifier, { implementation, scope });
 		return this;
 	}
