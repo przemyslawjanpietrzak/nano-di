@@ -14,7 +14,7 @@ This library provides a simple, lightweight dependency injection for TypeScript.
 Install:
 
 ```bash
-npx jsr add @beigert/nano-di S
+npx jsr add @beigert/nano-di
 ```
 
 ## Usage
